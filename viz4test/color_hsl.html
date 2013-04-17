@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<body>
+	<script src="./d3.v3.js"></script> 
+
+	<script>
+	
+	
+	   //  var hScale = d3.scale.linear().domain([1, 50]).range([0,360]);
+	     var sScale = d3.scale.linear().domain([1, 50]).range([0,1]);
+	     var lScale = d3.scale.linear().domain([1, 35]).range([0,1]);
+	      
+		var testData = [23,23,33,23];
+	
+	   
+	    function color(h,d){
+	       return d3.hsl(h,sScale(d),lScale(d));
+	    }
+	  
+			function showcolor(h){
+			   d3.select("body div")
+			 					  .data(testData)
+			 					  .enter()
+			 					  .append("div")
+			                      .text(function(d) {
+					         	       return color(h,d);
+					               })
+					             .style("background-color", function(d) {
+					         	       return color(h,d);
+					              })
+					              
+			                    .style("width","100px")
+			                    .style("height","100px")
+			                    .style("float","left")
+			                    .style("margin-left","2px")               
+			}
+		</script>
+	
+
+<button onclick="showcolor(120)">green</button>
+<button onclick="showcolor(0)">red</button>
+<button onclick="showcolor(210)">blue</button>
+
+</body>

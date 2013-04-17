@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>color</title>
+		<meta name="author" content="yanzq1" />
+		<!-- Date: 2013-04-15 -->
+		<script type="text/javascript" src="js/d3.v3.js"></script>
+		<style type="text/css">
+			 .abc0{background-color:rgb(165,0,38)}
+			 .abc1{background-color:rgb(215,48,39)}
+			 .abc2{background-color:rgb(244,109,67)}
+			 .abc3{background-color:rgb(253,174,97)}
+			 .abc4{background-color:rgb(254,224,139)}
+			 .abc5{background-color:rgb(255,255,191)}
+			 .abc6{background-color:rgb(217,239,139)}
+			 .abc7{background-color:rgb(166,217,106)}
+			 .abc8{background-color:rgb(102,189,99)}
+			 .abc9{background-color:rgb(26,152,80)}
+			 .abc10{background-color:rgb(0,104,55)}
+		
+		</style> 
+		<script type="text/javascript">
+			var color = d3.scale.quantize()
+                            .domain([1, 11])
+                            .range(d3.range(11).map(function(d) { return d;}));
+                         
+                            
+            function aa(){               
+                  var num=[11,2,3,4,5,6,7,8,9,10,11];
+                  
+                  g= d3.select("body").selectAll("div")
+	                   .data(num)
+	                   .enter().append("div")
+	                   .attr("class",function(d){return "abc"+color(d)})
+	                   .style("position","relative")
+	                   .style("float","left")
+	                   .style("margin-left","2px")
+	                   .style("height","100px").style("width","50px")
+	                 
+             } 
+      
+		</script>
+	</head>
+	<body onload="aa()">
+		
+	</body>
+</html>
+
