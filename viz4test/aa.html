@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+       	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<title>Hello D3</title>
+        <script type="text/javascript">  
+        var pub = {
+        	ii:"aa",
+        	fun1:function() {
+        		console.log(this);
+        		console.log(this.ii);
+        	},
+        }
+				
+		test=function(){
+					function aa(num1,num2){
+						return num1+num2;
+					}
+					function callaa1(num1,num2){
+						console.log(this);
+						return aa.apply(this,[num1,num2]);
+					}
+					function callaa2(num1,num2){
+						return aa.call(this,num1,num2);
+					}
+	
+					return callaa1(1,2);
+				}	
+				
+		test2=function(){
+			
+		   var val="blue";
+		   function aa(num1,num2){
+				    	 console.log(val);
+						return num1+num2;
+			}
+					
+			return function(){
+	
+				return aa.apply(this,[1, 2]);	
+				  
+		   };
+		}
+		
+				
+        </script>
+    
+    </head>
+    <body onload="pub.fun1();"></body>
+</html>

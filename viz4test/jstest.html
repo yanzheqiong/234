@@ -4,42 +4,49 @@
        	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 		<title>Hello D3</title>
         <script type="text/javascript">
+      
+		var pub={
+			test:function(){
+				
+			 var pub1={
+					f1:function (num1,num2){
+						return num1+num2;
+					},
+					f2:function (num1,num2){
+						console.log(this);
+						return function(){
+							console.log(this);
+						}
+						
+						//this.f1.apply(this,[num1,num2]);
+					}
+				}
+		        return pub1;
+			}	
+		 };	
+	 
+	 function a(){
+	 	consloe.log("a"+this);
+	 	return function(){
+	 		console.log("bb"+this);
+	 	}
+	 }
+	 
+	 
+	 
+		test2=function(){	
+		   var val="blue";
+		   function aa(num1,num2){
+				    	 console.log(val);
+						return num1+num2;
+			}	
+				return function(){		 
+				   return aa.apply(this,[1, 2]);	
+				};
+		}
 
-				function init(){
-					function sq1(x) {
-					  return x * x
-					}
-					
-					var sq2 = function(x) {
-					  return x * x
-					}
-					
-					console.log("sq1(4) ==", sq1(4)) // == 16
-					console.log("sq2(4) ==", sq2(4)) // == 16
-					
-					sq1.foo = 8
-					sq2.bar = 3
-					
-					console.log("Trippy:", sq1(sq1.foo + sq2.bar))
-					
-					
-					var formatter = function(prefix, fixed) {
-						  if (prefix == null) { prefix = '' }
-						  if (fixed == null) { fixed = 2 }
-						  return function(number) {
-						    return prefix + number.toFixed(fixed)
-						  }
-					}
-				
-					var currency = formatter('$', 2)
-					var roughly = formatter('~ ', 1)
-				
-					console.log("currency(31/3) ==", currency(31/3))
-					
-					console.log("roughly(31/3) ==", roughly(31/3))
-				}	
         </script>
     
     </head>
-    <body onload="init()"></body>
+    <body onload="pub.test().f2()()"></body>
 </html>
